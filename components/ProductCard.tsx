@@ -1,23 +1,24 @@
-'use client'
+import Image from 'next/image'
+import { Product } from '@/lib/products-api'
 
-type Product = {
-  id: number
-  name: string
-  price: number
-  image: string
+type Props = {
+  product: Product
 }
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({ product }: Props) {
   return (
-    <div className="bg-white shadow-md rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-200">
-      <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
-      <div className="p-4">
-        <h3 className="text-lg font-semibold">{product.name}</h3>
-        <p className="text-gray-700">${product.price.toFixed(2)}</p>
-        <button className="mt-2 bg-black text-white px-4 py-2 rounded hover:bg-gray-800">
-          Agregar al carrito
-        </button>
+    <div className="border rounded-lg p-4 shadow-sm">
+      <div className="relative w-full h-40 overflow-hidden rounded-lg">
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          className="object-contain"
+          style={{ borderRadius: '0.5rem' }} // Borde redondeado directo en la imagen
+        />
       </div>
+      <h3 className="font-semibold text-lg mt-2">{product.name}</h3>
+      <p className="text-gray-700">${product.price.toFixed(2)}</p>
     </div>
   )
 }

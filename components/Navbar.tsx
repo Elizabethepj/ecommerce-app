@@ -1,4 +1,19 @@
-'use client'
+import Link from 'next/link'
+
+export default function Navbar() {
+  return (
+    <nav className="bg-black text-white p-4">
+      <div className="flex justify-between items-center">
+        <Link href="/" className="font-bold text-lg">Mi Tienda</Link>
+        <Link href="/productos" className="hover:underline">Productos</Link>
+      </div>
+    </nav>
+  )
+}
+
+
+
+/*'use client'
 
 import Link from 'next/link'
 
@@ -21,4 +36,4 @@ export default function Navbar() {
       </div>
     </nav>
   )
-}
+}*/

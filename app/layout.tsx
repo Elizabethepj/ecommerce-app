@@ -1,15 +1,23 @@
 import './globals.css'
-import Navbar from '../components/Navbar'
-import { ReactNode } from 'react'
+import { Inter } from 'next/font/google'
+import ReactQueryProvider from '@/components/ReactQueryProvider'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+const inter = Inter({ subsets: ['latin'] })
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body>
-        <Navbar />
-        <main className="p-4">{children}</main>
+      <body className={`${inter.className} bg-white text-black min-h-screen flex flex-col`}>
+        <ReactQueryProvider>
+          <Header />
+          <main className="flex-grow p-4">
+            {children}
+          </main>
+          <Footer />
+        </ReactQueryProvider>
       </body>
     </html>
   )
 }
-
