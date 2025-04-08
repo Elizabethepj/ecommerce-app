@@ -4,6 +4,7 @@ export type Product = {
     price: number
     image: string
     category: string
+    description: string
   }
   
   const allProducts: Product[] = [
@@ -13,6 +14,7 @@ export type Product = {
       price: 19.99,
       image: '/images/camiseta.jpg',
       category: 'ropa',
+      description:'Una camiseta básica y elegante de color negro, perfecta para cualquier ocasión casual. Confeccionada en algodón de alta calidad, esta prenda es cómoda y versátil para cualquier temporada.',
     },
     {
       id: 2,
@@ -20,6 +22,7 @@ export type Product = {
       price: 49.99,
       image: '/images/zapatillas-amarillas.jpg',
       category: 'zapatos',
+      description: 'Zapatillas deportivas diseñadas para brindar confort y estilo mientras practicas deportes o disfrutas de un día activo. Con una suela resistente y materiales transpirables, son ideales para todo tipo de actividades físicas.',
     },
     {
       id: 3,
@@ -27,6 +30,7 @@ export type Product = {
       price: 29.99,
       image: '/images/audifonos.png',
       category: 'tecnologia',
+      description:'Audífonos inalámbricos Bluetooth que ofrecen un sonido de alta calidad y un ajuste cómodo. Son perfectos para escuchar música, hacer llamadas y disfrutar de la libertad de movimiento sin cables.',
     },
     {
       id: 4,
@@ -34,6 +38,7 @@ export type Product = {
       price: 400,
       image: '/images/computador.jpg',
       category: 'tecnologia',
+      description:'Computador portátil de alto rendimiento, ideal para trabajo y entretenimiento. Con una pantalla amplia, potente procesador y gran capacidad de almacenamiento, es perfecto para usuarios exigentes que requieren velocidad y eficiencia.',
     },
     {
       id: 5,
@@ -41,6 +46,7 @@ export type Product = {
       price: 120.00,
       image: '/images/teclado.jpg',
       category: 'tecnologia',
+      description:'Teclado ergonómico y duradero, diseñado para ofrecer una experiencia de escritura cómoda y fluida. Ideal tanto para trabajar como para jugar, con teclas de respuesta rápida y diseño compacto.',
     },
     {
       id: 6,
@@ -48,6 +54,7 @@ export type Product = {
       price: 85.00,
       image: '/images/zapatosele.jpg',
       category: 'zapatosele',
+      description:'Zapatos elegantes de diseño sofisticado, ideales para ocasiones especiales y eventos formales. Confeccionados con materiales de alta calidad, brindan comodidad y estilo en todo momento.',
     },
     {
       id: 7,
@@ -55,6 +62,7 @@ export type Product = {
       price: 199.99,
       image: '/images/picture17.jpg',
       category: 'tecnología',
+      description:'Smartwatch moderno y funcional que te ayuda a mantenerte conectado y organizado. Con pantalla táctil, monitorización de actividad física, notificaciones inteligentes y una variedad de aplicaciones, es el complemento perfecto para tu día a día.',
     },
     {
       id: 8,
@@ -62,6 +70,7 @@ export type Product = {
       price: 70.00,
       image: '/images/chaqueta.jpg',
       category: 'ropa',
+      description:'Chaqueta de estilo moderno y corte elegante, perfecta para abrigarte en los días frescos sin sacrificar el estilo. Hecha con materiales de alta calidad, esta chaqueta te mantendrá cómodo y a la moda.',
     },
     {
       id: 9,
@@ -69,6 +78,7 @@ export type Product = {
       price: 60.00,
       image: '/images/zapmujere.jpg',
       category: 'zapatos',
+      description:' Zapatos de mujer de estilo elegante y sofisticado, ideales para eventos formales o noches especiales. Su diseño y acabado cuidadosamente elaborados garantizan un ajuste cómodo y un look impecable.',
     },
     {
       id: 10,
@@ -76,6 +86,7 @@ export type Product = {
       price: 90.00,
       image: '/images/zapatosdep.jpg',
       category: 'zapatos',
+      description:'Zapatos deportivos diseñados para ofrecerte el máximo rendimiento en cualquier actividad física. Con una suela antideslizante y materiales transpirables, estos zapatos proporcionan comodidad y soporte en cada paso.',
     },
     {
       id: 11,
@@ -83,6 +94,7 @@ export type Product = {
       price: 40.00,
       image: '/images/vestidoele.jpg',
       category: 'ropa',
+      description:' Vestido elegante de corte moderno, ideal para ocasiones formales y celebraciones. Con detalles sutiles y una tela de alta calidad, este vestido realza tu figura y te asegura un look impresionante.',
     },
     {
       id: 12,
@@ -90,6 +102,7 @@ export type Product = {
       price: 90.00,
       image: '/images/Cámara.jpg',
       category: 'tecnologia',
+      description:'Cámara fotográfica digital de alta resolución, perfecta para capturar momentos especiales con gran detalle y claridad. Ideal tanto para fotógrafos principiantes como para expertos, cuenta con diversas funciones avanzadas.',
     },
     {
       id: 13,
@@ -97,6 +110,7 @@ export type Product = {
       price: 120.00,
       image: '/images/abrigoele.jpg',
       category: 'ropa',
+      description:'Traje elegante negro, la opción perfecta para eventos formales y ocasiones especiales. Con un corte clásico y un diseño atemporal, este traje te garantiza un look sofisticado y adecuado para cualquier evento importante.',
     },
     {
       id: 14,
@@ -104,6 +118,7 @@ export type Product = {
       price: 75.00,
       image: '/images/trajeazul.jpg',
       category: 'ropa',
+      description:'Traje elegante azul, ideal para quienes buscan un look profesional y estilizado. Con un diseño moderno y materiales de alta calidad, este traje es perfecto para una presentación importante o una noche formal.',
     },
     {
       id: 15,
@@ -111,6 +126,7 @@ export type Product = {
       price: 80.00,
       image: '/images/trajemujer.jpg',
       category: 'ropa',
+      description:'Traje elegante de mujer, compuesto por un conjunto de chaqueta y pantalón o falda, diseñado para resaltar tu figura con elegancia y distinción. Perfecto para ocasiones formales, reuniones de negocios o eventos especiales.',
     },
     
   ]
@@ -130,3 +146,8 @@ export type Product = {
     total: filtered.length
     }
    }
+
+   export function getProductById(id: number) {
+    return allProducts.find((product) => product.id === id)
+  }
+  

@@ -46,7 +46,6 @@ export default function ProductGrid() {
         ))}
       </div>
 
-      {/* Paginación */}
       <div className="flex justify-center mt-6 gap-4 items-center">
         <button
           onClick={() => setPage((p) => Math.max(p - 1, 1))}
