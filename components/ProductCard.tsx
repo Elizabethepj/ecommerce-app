@@ -13,8 +13,8 @@ export default function ProductCard({ product }: Props) {
           src={product.image}
           alt={product.name}
           fill
-          className="object-contain"
-          style={{ borderRadius: '0.5rem' }} // Borde redondeado directo en la imagen
+          className="object-contain cursor-pointer"
+          style={{ borderRadius: '0.10rem' }} // Borde redondeado directo en la imagen
         />
       </div>
       <h3 className="font-semibold text-lg mt-2">{product.name}</h3>

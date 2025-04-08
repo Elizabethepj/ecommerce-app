@@ -37,89 +37,96 @@ export type Product = {
     },
     {
       id: 5,
-      name: 'Chaqueta de cuero negra',
+      name: 'teclado',
       price: 120.00,
-      image: '',
-      category: 'ropa',
+      image: '/images/teclado.jpg',
+      category: 'tecnologia',
     },
     {
       id: 6,
-      name: 'Botines de cuero negros',
+      name: 'zapatos elegantes',
       price: 85.00,
-      image: '',
-      category: 'zapatos',
+      image: '/images/zapatosele.jpg',
+      category: 'zapatosele',
     },
     {
       id: 7,
-      name: 'Smartwatch negro',
+      name: 'Smartwatch',
       price: 199.99,
-      image: '',
+      image: '/images/picture17.jpg',
       category: 'tecnología',
     },
     {
       id: 8,
-      name: 'Pantalones deportivos negros',
-      price: 35.00,
-      image: '',
+      name: 'Chaqueta',
+      price: 70.00,
+      image: '/images/chaqueta.jpg',
       category: 'ropa',
     },
     {
       id: 9,
-      name: 'Zapatillas negras casuales',
+      name: 'Zapatos elegantes de mujer',
       price: 60.00,
-      image: '',
+      image: '/images/zapmujere.jpg',
       category: 'zapatos',
     },
     {
       id: 10,
-      name: 'Teclado mecánico retroiluminado',
-      price: 150.00,
-      image: '',
-      category: 'tecnología',
+      name: 'Zapatos deportivos',
+      price: 90.00,
+      image: '/images/zapatosdep.jpg',
+      category: 'zapatos',
     },
     {
       id: 11,
-      name: 'Sudadera con capucha negra',
+      name: 'Vestido elegante',
       price: 40.00,
-      image: '',
+      image: '/images/vestidoele.jpg',
       category: 'ropa',
     },
     {
       id: 12,
-      name: 'Zapatos de vestir negros',
+      name: 'Cámara fotográfica',
       price: 90.00,
-      image: '',
-      category: 'zapatos',
+      image: '/images/Cámara.jpg',
+      category: 'tecnologia',
     },
     {
       id: 13,
-      name: 'Auriculares inalámbricos negros',
+      name: 'Traje elegante negro',
       price: 120.00,
-      image: '',
-      category: 'tecnología',
+      image: '/images/abrigoele.jpg',
+      category: 'ropa',
     },
     {
       id: 14,
-      name: 'Vestido negro elegante',
+      name: 'Traje elegante azul',
       price: 75.00,
-      image: '',
+      image: '/images/trajeazul.jpg',
       category: 'ropa',
     },
     {
       id: 15,
-      name: 'Mocasines negros de cuero',
+      name: 'Traje elegante de mujer',
       price: 80.00,
-      image: '',
-      category: 'zapatos',
+      image: '/images/trajemujer.jpg',
+      category: 'ropa',
     },
     
   ]
   
-  export async function getProducts(category: string = '') {
+  export async function getProducts(category: string = '', page: number = 1, limit: number = 6) {
     await new Promise((res) => setTimeout(res, 1000)) // Simula demora
   
-    if (category) {
-      return allProducts.filter((product) => product.category === category)
+    let filtered = category
+      ? allProducts.filter((product) => product.category === category)
+      : allProducts
+  
+    const start = (page - 1) * limit
+    const paginated = filtered.slice(start, start + limit)
+  
+    return {
+    products: paginated,
+    total: filtered.length
     }
-    return allProducts
-  }
+   }
