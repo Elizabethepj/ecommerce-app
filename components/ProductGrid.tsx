@@ -30,7 +30,7 @@ export default function ProductGrid() {
   return (
     <div className="p-4">
       <div className="mb-4 flex flex-wrap justify-center gap-2">
-        <button onClick={() => handleCategoryChange('')} className="btn cursor-pointer">Todos</button>
+        <button onClick={() => handleCategoryChange('')} className="btn cursor-pointer">Todo</button>
         <button onClick={() => handleCategoryChange('Ropa')} className="btn cursor-pointer">Ropa</button>
         <button onClick={() => handleCategoryChange('Zapatos')} className="btn cursor-pointer">Zapatos</button>
         <button onClick={() => handleCategoryChange('Tecnología')} className="btn cursor-pointer">Tecnología</button>

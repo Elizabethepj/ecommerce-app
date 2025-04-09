@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import ProductCard from '@/components/ProductCard'
+import { useCart } from '@/context/CartContext'
 
 type Props = {
   params: Promise<{ id: string }>
@@ -15,6 +16,7 @@ type Props = {
 export default function ProductDetailPage({ params }: Props) {
   const { id } = use(params)
   const productId = Number(id)
+  const {addToCart} = useCart()
 
   const {
     data: product,
@@ -57,10 +59,26 @@ export default function ProductDetailPage({ params }: Props) {
       <p className="text-gray-600 mb-4">${product.price.toFixed(2)}</p>
       <p className="text-gray-700 mt-4">{product.description}</p>
 
+      <button
+      onClick={() =>
+      addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      quantity: 1
+      })
+      }
+      className="ml-4 bg-gray-900 text-white px-4 py-1 rounded-full hover:bg-blue-700 transition"
+      >
+      Agregar al carrito
+      </button>
+      
+
       <Link href="/productos" className="ml-4 inline-block px-4 py-1 bg-blue-100 text-blue-800 text-sm rounded-full mt-6 hover:bg-blue-200 transition">
         Atrás
       </Link>
-
+      
       <div className="mt-10">
         <h2 className="text-xl font-semibold mb-4">Productos relacionados</h2>
 
