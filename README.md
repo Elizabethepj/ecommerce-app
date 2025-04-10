@@ -101,4 +101,6 @@ Carrito dinámico con API externa: Integrar un backend para manejar productos y 
 
 Se podría agregar una solución de almacenamiento local o en base de datos para mantener el estado del carrito a través de sesiones del navegador.
 
+Hacer la funcionalidad de finalizar compra, sobre nosotrs y contacto.
+
 Responsable: Elizabeth Patiño Jaramillo
