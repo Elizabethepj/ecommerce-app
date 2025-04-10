@@ -22,9 +22,9 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
       open={isOpen}
       onClose={onClose}
       direction="right"
-      className="p-4 w-[350px] text-gray-600 shadow-lg" // Se aumentó el ancho para mayor espacio
+      className="p-4 w-[350px] text-gray-600 shadow-lg" 
     >
-      <div className="bg-gray-800 text-gray-100 h-full p-4 overflow-y-auto"> {/* Añadí overflow-y-auto */}
+      <div className="bg-gray-800 text-gray-100 h-full p-4 overflow-y-auto"> 
         <h2 className="text-xl font-bold mb-4 text-white">Tu Carrito</h2>
 
         {cart.length === 0 ? (
