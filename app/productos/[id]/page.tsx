@@ -69,7 +69,7 @@ export default function ProductDetailPage({ params }: Props) {
       quantity: 1
       })
       }
-      className="ml-4 bg-gray-900 text-white px-4 py-1 rounded-full hover:bg-blue-700 transition"
+      className="ml-4 bg-gray-900 cursor-pointer text-white px-4 py-1 rounded-full hover:bg-blue-700 transition"
       >
       Agregar al carrito
       </button>
