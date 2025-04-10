@@ -1,36 +1,97 @@
+# ECOMMERCE 
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+Este proyecto implementa un ECOMMECE que muestra una página principal en donde se encuentran los productos y tiene un carrito de compras, permitiendo a los usuarios agregar, eliminar y actualizar la cantidad de productos.
 
-First, run the development server:
+Requisitos previos
+Antes de ejecutar el proyecto, asegúrate de tener instalados los siguientes requisitos:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Node.js (v16 o superior)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+npm (gestor de paquetes de Node.js)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Instrucciones para ejecutar el proyecto localmente
+Clonar el repositorio
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Si no has clonado el proyecto aún, abre una terminal y ejecuta el siguiente comando:
 
-## Learn More
+bash
+Copiar
+Editar
+git clone 
+Instalar dependencias
 
-To learn more about Next.js, take a look at the following resources:
+Una vez clonado el repositorio, navega a la carpeta del proyecto y ejecuta el siguiente comando para instalar todas las dependencias necesarias:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+bash
+Copiar
+Editar
+cd 
+npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Ejecutar el proyecto
 
-## Deploy on Vercel
+Para ejecutar el proyecto localmente, utiliza el siguiente comando:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+bash
+Copiar
+Editar
+npm start
+Esto iniciará el servidor de desarrollo y podrás acceder al proyecto en tu navegador en http://localhost:3000.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Descripción de las características implementadas ✨
+Este proyecto tiene las siguientes características principales:
+
+1. Gestión del Carrito de Compras
+Agregar productos al carrito: Los usuarios pueden agregar productos al carrito de compras.
+
+Eliminar productos del carrito: Los usuarios pueden eliminar productos de su carrito en cualquier momento.
+
+Persistencia de datos en memoria: La información del carrito se mantiene en el estado de la aplicación mientras el usuario esté interactuando con ella (la información no persiste después de un recargue de página).
+
+2. Interfaz de Usuario:
+Lista de productos: El carrito muestra una lista de los productos añadidos, incluyendo nombre, precio y cantidad.
+
+Interacción dinámica: Los usuarios pueden cambiar la cantidad de productos, eliminar artículos del carrito o ver un resumen de los productos seleccionados.
+
+3. Context API de React:
+Utiliza el CartContext para gestionar el estado del carrito a lo largo de la aplicación, proporcionando una forma eficiente de compartir el estado entre componentes sin necesidad de pasar props manualmente a través de todos los niveles.
+
+Explicación de tus decisiones técnicas y arquitectónicas
+1. Uso de React Context para gestionar el estado global:
+Elegí usar React Context API para manejar el estado del carrito debido a su simplicidad y efectividad en la gestión de estados globales en aplicaciones pequeñas a medianas. De esta forma, no es necesario pasar las props entre componentes profundamente anidados.
+
+Ventajas:
+
+Mantiene el código más limpio y fácil de mantener.
+
+Facilita la extensión del proyecto si se desea integrar una funcionalidad como la persistencia de datos entre sesiones.
+
+Posibles mejoras: Se podría agregar una solución de almacenamiento local o en base de datos para mantener el estado del carrito a través de sesiones del navegador.
+
+2. Uso de useState para manejar el estado del carrito:
+El carrito se maneja con el hook useState, que permite actualizar el estado de los productos de manera reactiva. Esto facilita la actualización de la UI en función de las interacciones del usuario.
+
+3. Modularización y reutilización de componentes:
+Los componentes están organizados para ser reutilizables y modulares, lo que facilita la extensión de funcionalidades en el futuro. Por ejemplo, los componentes de los productos, el carrito y los botones de acción son independientes.
+
+Desafíos que enfrentaste y cómo los resolviste
+1. Desafío de manejar el estado del carrito:
+Inicialmente, intenté manejar el estado del carrito en cada componente, pero esto llevó a una duplicación innecesaria de lógica y a la dificultad de mantener el estado sincronizado.
+
+Solución: Implementé el CartContext, centralizando la gestión del carrito y evitando la necesidad de pasar el estado entre múltiples componentes de forma manual.
+
+2. Eliminar productos del carrito:
+En el principio, al intentar eliminar un producto del carrito, no lograba mantener la estructura correcta del estado, lo que llevaba a perder elementos no deseados o a modificar la estructura.
+
+Solución: Utilicé el método filter para crear una nueva lista del carrito excluyendo el producto que se eliminaba, lo que aseguraba que la actualización del estado se realizara correctamente sin alterar la integridad de la lista.
+
+Posibles Mejoras
+Ingresar datos sobre Nosotros y contacto en el Header
+
+Optimización en el manejo de cantidades: Poder disminuir o aumentar la cantidad de productos desde el carrito y agregar validaciones más robustas al cambiar la cantidad de productos (por ejemplo, no permitir cantidades negativas o muy altas).
+
+Carrito dinámico con API externa: Integrar un backend para manejar productos y precios dinámicamente, permitiendo que el carrito se sincronice con datos reales de un servidor.
+
+

@@ -14,7 +14,8 @@ type CartContextType = {
   cart: CartItem[]
   addToCart: (item: CartItem) => void
   removeItemFromCart: (id: number) => void // Eliminar productos
-  updateItemQuantity: (id: number, quantity: number) => void // Actualizar la cantidad
+  increaseQuantity: (id: number) => void // Aumentar la cantidad
+  decreaseQuantity: (id: number) => void // Disminuir la cantidad
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
@@ -44,22 +45,33 @@ export function CartProvider({ children }: { children: ReactNode }) {
     })
   }
 
+  // Función para aumentar la cantidad de un producto
+  const increaseQuantity = (id: number) => {
+    setCart((prev) =>
+      prev.map(item =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    )
+  }
+
+  // Función para disminuir la cantidad de un producto
+  const decreaseQuantity = (id: number) => {
+    setCart((prev) =>
+      prev.map(item =>
+        item.id === id && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+    )
+  }
+
   // Eliminar un producto del carrito
   const removeItemFromCart = (id: number) => {
     setCart(prev => prev.filter(item => item.id !== id))
   }
 
-  // Actualizar la cantidad de un producto en el carrito
-  const updateItemQuantity = (id: number, quantity: number) => {
-    setCart(prev => 
-      prev.map(item =>
-        item.id === id ? { ...item, quantity: quantity } : item
-      )
-    )
-  }
-
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeItemFromCart, updateItemQuantity }}>
+    <CartContext.Provider value={{ cart, addToCart, removeItemFromCart, increaseQuantity, decreaseQuantity }}>
       {children}
     </CartContext.Provider>
   )
