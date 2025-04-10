@@ -1,5 +1,4 @@
-'use client'
-
+import { useEffect, useState } from 'react'
 import { FaTrashAlt } from 'react-icons/fa'
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
@@ -12,9 +11,18 @@ type CartDrawerProps = {
 
 export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
   const { cart, removeItemFromCart, increaseQuantity, decreaseQuantity } = useCart()
+  const [isClient, setIsClient] = useState(false)
+
+  // Se asegura de que el componente se renderice solo en el cliente
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  // Evita que el contenido del carrito se muestre en el servidor
+  if (!isClient) return null
 
   const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0)
-  const tax = subtotal * 0.16 // 16% IVA por ejemplo
+  const tax = subtotal * 0.16 // 16% IVA
   const total = subtotal + tax
 
   return (

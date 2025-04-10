@@ -88,6 +88,10 @@ Al principio, al intentar eliminar un producto del carrito, no lograba mantener 
 
 Solución: Utilicé el método filter para crear una nueva lista del carrito excluyendo el producto que se eliminaba, lo que aseguraba que la actualización del estado se realizara correctamente sin alterar la integridad de la lista.
 
+3. Problemas de hidratación: Usé useEffect para asegurar que el componente solo se renderizará en el cliente, evitando posibles desajustes con el servidor (error de hidratación). Esto lo logramos con el estado isClient, que se establece como true solo después de que el componente se monta en el cliente. También puse una dondición Si isClient es false, el componente no se renderiza en el servidor (if (!isClient) return null), lo que evita el desajuste que ocurre entre la renderización del servidor y la del cliente.
+
+4. uso de Params. Los coloqué directamente siguiendo una versión anterior y los debía envolver en React.use para desempaquetarlos.
+
 ## Posibles Mejoras
 Ingresar datos sobre Nosotros y contacto en el Header
 
