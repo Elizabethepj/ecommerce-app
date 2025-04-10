@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useCart } from '@/context/CartContext'
 import ProductCard from '@/components/ProductCard'
-import { use } from 'react';  // Asegúrate de importar `use` de React
+import { useParams } from 'next/navigation' // Importar `useParams` de Next.js
 
 type Product = {
   id: number
@@ -17,17 +17,13 @@ type Product = {
   category: string
 }
 
-type Props = {
-  params: { id: string }
-}
-
 type ProductDetailContentProps = {
   productId: number
   addToCart: (item: { id: number, name: string, price: number, image: string, quantity: number }) => void
 }
 
-export default function ProductDetailPage({ params }: Props) {
-  const { id } = use(params)  // Desenvuelve `params` con React.use() para acceder al valor
+export default function ProductDetailPage() {
+  const { id } = useParams()  // Usamos `useParams` para obtener el parámetro `id` desde la URL
   const productId = Number(id)
   const { addToCart } = useCart()
 
